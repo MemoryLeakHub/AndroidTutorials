@@ -1,0 +1,16 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url "https://jitpack.io" }
+        maven {
+            url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}
+rootProject.name = "AndroidTutorials"
+include ':app'
+include ':shared_image'
+include ':nested_navhosts'
