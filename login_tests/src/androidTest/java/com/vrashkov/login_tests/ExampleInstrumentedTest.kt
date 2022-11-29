@@ -1,4 +1,4 @@
-package com.vrashkov.shared_image
+package com.vrashkov.login_tests
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.vrashkov.shared_image", appContext.packageName)
+        assertEquals("com.vrashkov.login_tests", appContext.packageName)
     }
 }

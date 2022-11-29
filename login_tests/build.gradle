@@ -1,0 +1,117 @@
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id "org.jetbrains.kotlin.plugin.serialization" version "1.5.31"
+}
+
+android {
+    namespace _applicationId
+    compileSdk _compileSdk
+
+    defaultConfig {
+        applicationId _applicationId
+        minSdk _minSdk
+        targetSdk _targetSdk
+        versionCode _versionCode
+        versionName _versionName
+
+        testInstrumentationRunner "com.vrashkov.login_tests.MemoryLeakTestRunner"
+    }
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion _composeVersion
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+    buildFeatures {
+        compose = true
+    }
+}
+
+dependencies {
+
+    def composeBom = platform('androidx.compose:compose-bom:2022.10.00')
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    implementation(_composeActivity)
+    implementation(_composeUi)
+    implementation(_composeMaterial)
+    implementation(_composeTooling)
+    implementation(_accompanistAnimations)
+
+    ///////////// hilt
+    implementation(_hiltAndroid)
+    kapt(_hiltCompiler)
+
+    androidTestImplementation(_hiltAndroidTest)
+    kaptAndroidTest(_hiltCompiler)
+
+    testImplementation(_hiltAndroidTest)
+    kaptTest(_hiltAndroidCompiler)
+    kaptAndroidTest(_hiltAndroidCompiler)
+
+    androidTestAnnotationProcessor(_hiltAndroidTest)
+    implementation(_hiltAndroidTest)
+
+    androidTestAnnotationProcessor(_hiltAndroidCompiler)
+    ///////////////
+
+    implementation(_composeNavigation)
+    implementation(_composeHiltNavigation)
+
+    implementation(_kotlinSerialization)
+    implementation(_ktorCore)
+
+    implementation(_retrofit)
+    implementation(_retrofitMoshiConverter)
+    implementation(_okHttpLoginInterceptor)
+    implementation(_moshi)
+    implementation(_moshiKotlin)
+    implementation(_androidXRunner)
+
+    androidTestImplementation(_junit)
+    androidTestImplementation(_googleTruth)
+    androidTestImplementation(_mockitoCore)
+    androidTestImplementation(_mockitoCoreAndroid)
+    androidTestImplementation(_mockitoKotlin)
+    androidTestImplementation(_mockWebServer)
+    androidTestImplementation(_mockkAndroid)
+    androidTestImplementation(_androidXRunner)
+    androidTestImplementation(_androidXCore)
+    androidTestUtil(_androidTestOrchestrator)
+    androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+
+    androidTestImplementation(_uiTestUnit4)
+    debugImplementation(_uiTestUnitManifest)
+
+    testImplementation(_hiltAndroidTest)
+    testImplementation(_junit)
+    testImplementation(_mockk)
+    testImplementation(_robolectric)
+    testImplementation(_coroutinesTesting)
+    testImplementation(_turbine)
+
+
+}
