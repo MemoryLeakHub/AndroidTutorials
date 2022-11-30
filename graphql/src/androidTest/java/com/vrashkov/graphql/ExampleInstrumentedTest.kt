@@ -1,4 +1,4 @@
-package com.vrashkov.nested_navhosts
+package com.vrashkov.graphql
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.vrashkov.nested_navhosts", appContext.packageName)
+        assertEquals("com.vrashkov.graphql", appContext.packageName)
     }
 }

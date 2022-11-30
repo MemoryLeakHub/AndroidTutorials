@@ -14,7 +14,7 @@ buildscript {
         _applicationId = "com.vrashkov.androidtutorials"
         _compileSdk= 33
         _minSdk = 26
-        _targetSdk = 32
+        _targetSdk = 33
         _versionCode = 1
         _versionName = "1.0"
 
@@ -26,7 +26,7 @@ buildscript {
         _ktxVersion = "1.9.0"
         _appCompatVersion = "1.5.1"
         _composeActivityVersion = "1.6.1"
-        _composeNavigationVersion = "2.5.3"
+        _composeNavigationVersion = "2.6.0-alpha04"
         _composeHiltNavigationVersion = "1.0.0"
         _googleMaterialVersion = "1.7.0"
         _kotlinSerializationVersion = "1.4.1"
@@ -34,7 +34,7 @@ buildscript {
         _junitVersion = "4.13.2"
         _lifecycleVmKtxVersion = "2.5.1"
         _roomVersion = "2.4.3"
-        _apolloVersion = "3.6.2"
+        _apolloVersion = "3.7.1"
         _jetbrainsAnnotationVersion = "23.0.0"
         _retrofitVersion = "2.9.0"
         _httploggingVersion = "4.10.0"//"3.12.0"
@@ -58,7 +58,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
         classpath "com.google.dagger:hilt-android-gradle-plugin:${_hiltVersion}"
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -131,12 +130,6 @@ buildscript {
         _roomCompiler = "androidx.room:room-compiler:${_roomVersion}"
         _roomKtx = "androidx.room:room-ktx:${_roomVersion}"
 
-        _apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${_apolloVersion}"
-        _apolloNormalizedCache = "com.apollographql.apollo3:apollo-normalized-cache-incubating:${_apolloVersion}"
-        _apolloNormalizedCacheSql = "com.apollographql.apollo3:apollo-normalized-cache-sqlite-incubating:${_apolloVersion}"
-
-        _apolloApi = "com.apollographql.apollo3:apollo-api:${_apolloVersion}"
-
         _jetbrainsAnnotations = "org.jetbrains:annotations:${_jetbrainsAnnotationVersion}"
 
         _retrofit = "com.squareup.retrofit2:retrofit:${_retrofitVersion}"
@@ -158,6 +151,7 @@ buildscript {
         _androidXRunner = "androidx.test:runner:${_androidXVersion}"
         _androidXRules = "androidx.test:rules:${_androidXVersion}"
         _androidXCore = "androidx.test:core:${_androidXVersion}"
+        _androidTestOrchestrator = "androidx.test:orchestrator:${_androidXVersion}"
 
         _uiTestUnit4 = "androidx.compose.ui:ui-test-junit4"
         _uiTestUnitManifest = "androidx.compose.ui:ui-test-manifest"
@@ -179,6 +173,14 @@ buildscript {
 
         _mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${_mockitoKotlinVersion}"
         _mockitoInline = "org.mockito:mockito-inline:${_mockitoCoreVersion}"
+        _gson = "com.google.code.gson:gson:2.10"
+
+        _apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${_apolloVersion}"
+        _apolloNormalizedCache = "com.apollographql.apollo3:apollo-normalized-cache-incubating:${_apolloVersion}"
+        _apolloNormalizedCacheSql = "com.apollographql.apollo3:apollo-normalized-cache-sqlite-incubating:${_apolloVersion}"
+
+        _apolloApi = "com.apollographql.apollo3:apollo-api:${_apolloVersion}"
+
     }
 }
 allprojects {

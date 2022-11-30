@@ -1,9 +1,11 @@
 plugins {
-    id("com.android.application")
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
     id("kotlin-android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     id "org.jetbrains.kotlin.plugin.serialization" version "1.5.31"
+    id("com.apollographql.apollo3").version("3.7.1")
 }
 
 android {
@@ -16,9 +18,13 @@ android {
         targetSdk _targetSdk
         versionCode _versionCode
         versionName _versionName
-
     }
-
+    sourceSets {
+        main.java.srcDirs += 'src/main/graphql'
+    }
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -39,15 +45,22 @@ android {
         kotlinCompilerExtensionVersion _composeVersion
     }
     packagingOptions {
-        resources {
-            exclude 'META-INF/LICENSE'
-            exclude 'META-INF/*.properties'
-            exclude 'META-INF/AL2.0'
-            exclude 'META-INF/LGPL2.1'
-        }
+        resources.excludes.add("META-INF/*")
     }
     buildFeatures {
         compose = true
+    }
+}
+
+apollo {
+    service("MemoryLeakGraphQL") {
+        packageName.set("com.vrashkov.graphql")
+
+        introspection {
+            endpointUrl.set("https://apollo-fullstack-tutorial.herokuapp.com/graphql")
+            schemaFile.set(file("src/main/graphql/com/vrashkov/graphql/schema.sdl"))
+            //headers.put("key", val)
+        }
     }
 }
 
@@ -82,4 +95,10 @@ dependencies {
 
     implementation(_composeNavigation)
     implementation(_composeHiltNavigation)
+
+    implementation _apolloRuntime
+    implementation _apolloNormalizedCache
+    implementation _apolloNormalizedCacheSql
+
+    implementation(_okHttpLoginInterceptor)
 }

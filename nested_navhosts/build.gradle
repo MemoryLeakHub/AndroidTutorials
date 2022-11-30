@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "org.jetbrains.kotlin.plugin.serialization" version "1.5.31"
 }
 
 android {
@@ -36,7 +37,10 @@ android {
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/*.properties'
+            exclude 'META-INF/AL2.0'
+            exclude 'META-INF/LGPL2.1'
         }
     }
     buildFeatures {

@@ -14,3 +14,6 @@ rootProject.name = "AndroidTutorials"
 include ':app'
 include ':shared_image'
 include ':nested_navhosts'
+include ':navigation_values'
+include ':login_tests'
+include ':graphql'

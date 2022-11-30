@@ -1,0 +1,12 @@
+fragment LaunchTile on Launch {
+    id
+    isBooked
+    rocket {
+        id
+        name
+    }
+    mission {
+        name
+        missionPatch
+    }
+}
