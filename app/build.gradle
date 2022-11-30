@@ -36,7 +36,10 @@ android {
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/*.properties'
+            exclude 'META-INF/AL2.0'
+            exclude 'META-INF/LGPL2.1'
         }
     }
     buildFeatures {
@@ -54,4 +57,7 @@ dependencies {
     implementation(_composeUi)
     implementation(_composeMaterial)
     implementation(_composeTooling)
+
+    implementation "com.google.accompanist:accompanist-pager:0.27.1"
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.27.1"
 }
