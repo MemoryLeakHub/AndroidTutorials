@@ -59,4 +59,5 @@ dependencies {
     implementation(_composeMaterial)
     implementation(_composeTooling)
     implementation(_composeNavigation)
+    implementation(_gson)
 }

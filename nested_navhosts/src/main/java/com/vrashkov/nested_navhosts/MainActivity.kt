@@ -6,11 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vrashkov.nested_navhosts.ui.theme.AndroidTutorialsTheme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,6 +100,8 @@ fun ProductDetailsScreen() {
 
 @Composable
 fun Tab1Screen() {
+    val random = rememberSaveable() { mutableStateOf(Random.nextInt(0, 100))}
+    val random2 = remember() {mutableStateOf(Random.nextInt(0, 100))}
     Box(Modifier.fillMaxSize().background(Color.Yellow)) {
         Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
             Button(
@@ -118,20 +121,73 @@ fun Tab1Screen() {
             ) {
                 Text("Product Details")
             }
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random : ${random.value}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random2 : ${random2.value}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random3 : ${Random.nextInt(0, 100)}")
         }
     }
 }
 
 @Composable
 fun Tab2Screen() {
-    Box(Modifier.fillMaxSize().background(Color.Green)) {
-        Text(modifier = Modifier.align(Alignment.Center), text = "Tab2Screen")
+    val random = rememberSaveable() { mutableStateOf(Random.nextInt(0, 100))}
+    val random2 = remember() {mutableStateOf(Random.nextInt(0, 100))}
+    Box(Modifier.fillMaxSize().background(Color.Cyan)) {
+        Column (modifier = Modifier.align(Alignment.Center)) {
+            Text(text = "Tab2Screen")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random : ${random.value}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random2 : ${random2.value}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random3 : ${Random.nextInt(0, 100)}")
+        }
     }
 }
 
 @Composable
 fun Tab3Screen() {
+//    val arguments = LocalNavigationState.baseNavigation.getNavController.currentBackStackEntry?.arguments
+//    val params = arguments?.getString(NavArguments.tab_3_animals)
+//
+//    val paramsData = params?.let {
+//        AnimalsParametersType.parseValue(it)
+//    }
+//
+//    println(paramsData)
+//    var selectedTab = remember {
+//        mutableStateOf(paramsData?.tab ?: AnimalsTab.DOG)
+//    }
+    val random = rememberSaveable() { mutableStateOf(Random.nextInt(0, 100))}
+    val random2 = remember() {mutableStateOf(Random.nextInt(0, 100))}
     Box(Modifier.fillMaxSize().background(Color.Cyan)) {
-        Text(modifier = Modifier.align(Alignment.Center), text = "Tab3Screen")
+//        Column(modifier = Modifier.fillMaxWidth()) {
+//            TabRow(
+//                selectedTabIndex = selectedTab.value.index,
+//                contentColor = Color.Yellow
+//            ) {
+//                val tabs = AnimalsTab.values()
+//                tabs.forEach {
+//                    Tab(selected = it == selectedTab.value, text = {
+//                        Text(text = it.tabName)
+//                    }, onClick = {
+//                        selectedTab.value = it
+//                    })
+//                }
+//            }
+//            Text("current tab : ${selectedTab.value.tabName}")
+//        }
+        Column (modifier = Modifier.align(Alignment.Center)) {
+            Text(text = "Tab3Screen")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random : ${random.value}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random2 : ${random2.value}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Random3 : ${Random.nextInt(0, 100)}")
+        }
     }
 }
