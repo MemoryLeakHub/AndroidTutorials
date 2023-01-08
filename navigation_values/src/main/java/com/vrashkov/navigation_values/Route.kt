@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
+
 const val BASE_ROUTE = "base"
 const val PRODUCT_ROUTE = "product"
 
@@ -22,7 +23,7 @@ data class ProductParameters(
 //    }
 }
 
-class ProductParametersType : NavType<ProductParameters>(
+val ProductParametersType: NavType<ProductParameters?> = object : NavType<ProductParameters?>(
     isNullableAllowed = false
 ) {
     override fun get(bundle: Bundle, key: String): ProductParameters? {
@@ -31,10 +32,10 @@ class ProductParametersType : NavType<ProductParameters>(
     override fun parseValue(value: String): ProductParameters {
         return Gson().fromJson(value, ProductParameters::class.java)
     }
-    override fun put(bundle: Bundle, key: String, value: ProductParameters) {
+    override fun put(bundle: Bundle, key: String, value: ProductParameters?) {
         bundle.putString(key, Gson().toJson(value))
     }
-    override fun serializeAsValue(value: ProductParameters): String {
+    override fun serializeAsValue(value: ProductParameters?): String {
         return Gson().toJson(value)
     }
 }
@@ -55,7 +56,7 @@ sealed class Route(val link: String, val arguments: List<NamedNavArgument> = emp
             navArgument(
                 name = NavArguments.product_details_parameters
             ) {
-                type = ProductParametersType()
+                type = ProductParametersType
             }
         )
     )

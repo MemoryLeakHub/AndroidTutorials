@@ -6,11 +6,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -57,7 +56,7 @@ fun ProductListScreen(navController: NavController) {
             Button(
                 onClick = {
                     val product = ProductParameters(17)
-                    val productLink = NavRouteName.product_details+"/"+ProductParametersType().serializeAsValue(product)
+                    val productLink = NavRouteName.product_details+"/"+ProductParametersType.serializeAsValue(product)
                     println("productLink : " + productLink)
                     navController.navigate(productLink)
                 }
@@ -73,10 +72,11 @@ fun ProductDetailsScreen(navBackStackEntry: NavBackStackEntry, navController: Na
     val params = arguments?.getString(NavArguments.product_details_parameters)
 
     val paramsData = params?.let {
-        ProductParametersType().parseValue(it)
+        ProductParametersType.parseValue(it)
     }
     Box(Modifier.fillMaxSize().background(Color.White)) {
         Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+
             Button(
                 onClick = {
                     navController.navigate(Route.ProductList.link)

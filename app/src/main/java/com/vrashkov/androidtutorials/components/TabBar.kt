@@ -58,11 +58,6 @@ fun TabBar() {
         count = pages.size,
         state = pagerState,
     ) { page ->
-        when(page) {
-            1 -> {
-
-            }
-        }
         Box(Modifier.fillMaxSize()) {
             Text(modifier = Modifier.align(Alignment.Center), text = "Page $page")
         }
