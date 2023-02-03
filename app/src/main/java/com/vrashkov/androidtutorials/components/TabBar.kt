@@ -50,6 +50,23 @@ fun TabBar() {
                 selected = pagerState.currentPage == index,
                 onClick = { /* TODO */ },
             )
+            // For default tab background
+            // you can do something similar to that
+            // Sets a background to all tabs except the selected one
+//            Tab(
+//                modifier = Modifier.zIndex(6f),
+//                text = {
+//                    if (pagerState.currentPage != index) {
+//                        Box(modifier = Modifier.background(Color.Red).padding(10.dp)) {
+//                            Text(text = title)
+//                        }
+//                    } else {
+//                        Text(text = title)
+//                    }
+//                },
+//                selected = pagerState.currentPage == index,
+//                onClick = { /* TODO */ },
+//            )
         }
     }
 
