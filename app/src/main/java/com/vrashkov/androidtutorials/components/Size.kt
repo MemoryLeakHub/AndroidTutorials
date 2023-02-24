@@ -38,3 +38,14 @@ val Int._dpw: Dp get() = if (this == 0) Dp(0f) else Dp(this.toFloat().toWidth())
 val Int._dph: Dp get() = if (this == 0) Dp(0f) else Dp(this.toFloat().toHeight())
 @OptIn(ExperimentalUnitApi::class)
 val Int._sp: TextUnit get() = if (this == 0)  TextUnit(0f, TextUnitType.Sp)  else TextUnit(this.toFloat().toSize(), TextUnitType.Sp)
+
+//  To use AppConfig
+//  Create a custom Application class and inside set it like this
+//override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
+//    super.onConfigurationChanged(newConfig)
+//    try {
+//        AppConfig.onConfigChanged(applicationContext, newConfig)
+//    } catch (e: Exception) {
+//        Log.d("Error", e.localizedMessage )
+//    }
+//}
